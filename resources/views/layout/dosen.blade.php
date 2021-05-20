@@ -11,7 +11,7 @@
         </div>
     @endif
     <a href="/dosen/add" class="btn btn-sm btn-info">Tambah</a><br>
-    
+
     {{-- search --}}
     <p>Cari dosen :</p>
     <form action="/dosen/cari" method="GET">
@@ -50,5 +50,9 @@
                 @endforeach
             </tbody>
         </table>
+        <br/>
+        Halaman : {{ $dosen->currentPage() }} <br/>
+        Jumlah Data : {{ $dosen->total() }} <br/>
+        {{ $dosen->links() }}
     </div>
 @endsection

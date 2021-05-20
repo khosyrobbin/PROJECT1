@@ -45,5 +45,9 @@
                 @endforeach
             </tbody>
         </table>
+        <br/>
+        Halaman : {{ $skripsi->currentPage() }} <br/>
+        Jumlah Data : {{ $skripsi->total() }} <br/>
+        {{ $skripsi->links() }}
     </div>
 @endsection

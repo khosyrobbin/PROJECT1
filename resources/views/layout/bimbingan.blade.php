@@ -46,5 +46,9 @@
                 @endforeach
             </tbody>
         </table>
+        <br/>
+        Halaman : {{ $bimbingan->currentPage() }} <br/>
+        Jumlah Data : {{ $bimbingan->total() }} <br/>
+        {{ $bimbingan->links() }}
     </nav>
 @endsection

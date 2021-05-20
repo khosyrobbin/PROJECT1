@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class SkripsiModel extends Model
 {
     public function allData(){
-        return DB::table('skripsis')->get();
+        return DB::table('skripsis')->paginate(5);
     }
 
     public function detailData($id_skripsi){

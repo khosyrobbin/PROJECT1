@@ -46,5 +46,9 @@
                 @endforeach
             </tbody>
         </table>
+        <br/>
+        Halaman : {{ $jadwal->currentPage() }} <br/>
+        Jumlah Data : {{ $jadwal->total() }} <br/>
+        {{ $jadwal->links() }}
     </div>
 @endsection

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class MahasiswaModel extends Model
 {
     public function allData(){
-        return DB::table('mahasiswas')->get();
+        return DB::table('mahasiswas')->paginate(5);
     }
 
     public function addData($data){

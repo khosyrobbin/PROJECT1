@@ -14,7 +14,7 @@ class BimbinganModel extends Model
         return DB::table('bimbingans')
             ->join('dosens', 'dosens.nip', '=', 'bimbingans.nip')
             ->join('mahasiswas', 'mahasiswas.nim', '=', 'bimbingans.nim')
-            ->get();
+            ->paginate(5);
     }
 
     public function addData($data){
