@@ -43,7 +43,7 @@
                         <td>{{ $data->no_telpon }}</td>
                         <td><img src="{{ url('foto_dosen/'.$data->foto) }}" width="100px"></td>
                         <td>
-                            <a href="" class="btn btn-sm btn-primary">EDIT</a>
+                            <a href="/dosen/edit/{{ $data->nip }}" class="btn btn-sm btn-primary">EDIT</a>
                             <a href="" class="btn btn-sm btn-danger">DELETE</a>
                         </td>
                     </tr>

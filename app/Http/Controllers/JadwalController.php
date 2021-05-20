@@ -63,4 +63,33 @@ class JadwalController extends Controller
         return view('layout.jadwal', $data);
     }
 
+    // edit
+    public function edit($id_jadwal)
+    {
+        $data = [
+            'jadwal' => $this->JadwalModel->detailData($id_jadwal),
+        ];
+        return view('layout.editJadwal', $data);
+    }
+    // update
+    public function update($id_jadwal)
+    {
+        Request()->validate([
+            'hari' => 'required',
+            'tanggal' => 'required',
+            'waktu' => 'required',
+            'ruangan' => 'required',
+        ]);
+
+        $data = [
+            'hari' => Request()->hari,
+            'tanggal' => Request()->tanggal,
+            'waktu' => Request()->waktu,
+            'ruangan' => Request()->ruangan,
+        ];
+
+        $this->JadwalModel->editData($id_jadwal, $data);
+        return redirect()->route('jadwal')->with('pesan', 'Data Berhasil DiPerbarui');
+    }
+
 }

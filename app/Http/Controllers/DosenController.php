@@ -74,4 +74,40 @@ class DosenController extends Controller
         return view('layout.dosen', $data);
     }
 
+    // edit
+    public function edit($nip){
+        $data = [
+            'dosen' => $this->DosenModel->detailData($nip),
+        ];
+        return view('layout.editDosen', $data);
+    }
+    // update
+    public function update($nip){
+        Request()->validate([
+            'nip' => 'required|min:4|max:10',
+            'nama_dosen' => 'required',
+            'jurusan' => 'required',
+            'no_telpon' => 'required',
+            'pendidikan' => 'required',
+            'foto' => 'required|mimes:jpg,jpeg,png|max:1024',
+        ]);
+
+        //upload gambar
+        $file = Request()->foto;
+        $fileName = Request()->nip.'.'.$file->extension();
+        $file->move(public_path('foto_dosen'), $fileName);
+
+        $data = [
+            'nip' => Request()->nip,
+            'nama_dosen' => Request()->nama_dosen,
+            'jurusan' => Request()->jurusan,
+            'no_telpon' => Request()->no_telpon,
+            'pendidikan' => Request()->pendidikan,
+            'foto' => $fileName,
+        ];
+
+        $this->DosenModel->editData($nip ,$data);
+        return redirect()->route('dosen')->with('pesan','Data Berhasil Diperbarui');
+    }
+
 }

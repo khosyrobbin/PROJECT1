@@ -15,4 +15,12 @@ class JadwalModel extends Model
     public function addData($data){
         DB::table('jadwals')->insert($data);
     }
+
+    public function detailData($id_jadwal){
+        return DB::table('jadwals')->where('id_jadwal', $id_jadwal)->first();
+    }
+
+    public function editData($id_jadwal, $data){
+        DB::table('jadwals')->where('id_jadwal', $id_jadwal)->update($data);
+    }
 }

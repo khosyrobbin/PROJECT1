@@ -48,22 +48,53 @@ class BimbinganController extends Controller
     }
 
     // Search data
-    public function cari(Request $request){
+    public function cari(Request $request)
+    {
         // menangkap data pencarian
-		$cari = $request->cari;
+        $cari = $request->cari;
 
         // mengambil data dari table pegawai sesuai pencarian data
         $data = [
             'bimbingan' => DB::table('bimbingans')
-            ->join('dosens', 'dosens.nip', '=', 'bimbingans.nip')
-            ->join('mahasiswas', 'mahasiswas.nim', '=', 'bimbingans.nim')
-            ->orWhere('nama','like',"%".$cari."%")
-            ->orWhere('nama_dosen','like',"%".$cari."%")
-            ->get(),
+                ->join('dosens', 'dosens.nip', '=', 'bimbingans.nip')
+                ->join('mahasiswas', 'mahasiswas.nim', '=', 'bimbingans.nim')
+                ->orWhere('nama', 'like', "%" . $cari . "%")
+                ->orWhere('nama_dosen', 'like', "%" . $cari . "%")
+                ->get(),
         ];
 
 
         // mengirim data pegawai ke view index
         return view('layout.bimbingan', $data);
+    }
+
+    // edit
+    public function edit($id_bimbingan)
+    {
+        $data = [
+            'bimbingan' => $this->BimbinganModel->detailData($id_bimbingan),
+        ];
+        return view('layout.editBimbingan', $data);
+    }
+
+    public function update($id_bimbingan)
+    {
+        Request()->validate([
+            'nip' => 'required',
+            'nim' => 'required',
+            'tanggal' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        //create
+        $data = [
+            'nip' => Request()->nip,
+            'nim' => Request()->nim,
+            'tanggal' => Request()->tanggal,
+            'keterangan' => Request()->keterangan,
+        ];
+
+        $this->BimbinganModel->editData($id_bimbingan, $data);
+        return redirect()->route('bimbingan')->with('pesan', 'Data Berhasil Diperbarui');
     }
 }

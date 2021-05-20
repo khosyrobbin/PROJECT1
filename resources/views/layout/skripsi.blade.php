@@ -38,7 +38,7 @@
                         <td>{{ $data->file }}</td>
                         <td>
                             <a href="/skripsi/detail/{{ $data->id_skripsi }}" class="btn btn-sm btn-warning">DETAIL</a>
-                            <a href="" class="btn btn-sm btn-primary">EDIT</a>
+                            <a href="/skripsi/edit/{{ $data->id_skripsi }}" class="btn btn-sm btn-primary">EDIT</a>
                             <a href="" class="btn btn-sm btn-danger">DELETE</a>
                         </td>
                     </tr>

@@ -15,4 +15,12 @@ class DosenModel extends Model
     public function addData($data){
         DB::table('dosens')->insert($data);
     }
+
+    public function detailData($nip){
+        return DB::table('dosens')->where('nip', $nip)->first();
+    }
+
+    public function editData($nip, $data){
+        DB::table('dosens')->where('nip', $nip)->update($data);
+    }
 }

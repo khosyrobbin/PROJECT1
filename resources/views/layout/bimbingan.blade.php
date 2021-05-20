@@ -39,7 +39,7 @@
                         <td>{{ $data->tanggal }}</td>
                         <td>{{ $data->keterangan }}</td>
                         <td>
-                            <a href="" class="btn btn-sm btn-primary">EDIT</a>
+                            <a href="/bimbingan/edit/{{ $data->id_bimbingan }}" class="btn btn-sm btn-primary">EDIT</a>
                             <a href="" class="btn btn-sm btn-danger">DELETE</a>
                         </td>
                     </tr>

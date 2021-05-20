@@ -19,4 +19,8 @@ class SkripsiModel extends Model
     public function addData($data){
         DB::table('skripsis')->insert($data);
     }
+
+    public function editData($id_skripsi, $data){
+        DB::table('skripsis')->where('id_skripsi', $id_skripsi)->update($data);
+    }
 }
