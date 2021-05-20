@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JadwalModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JadwalController extends Controller
 {
@@ -40,6 +41,26 @@ class JadwalController extends Controller
 
         $this->JadwalModel->addData($data);
         return redirect()->route('jadwal')->with('pesan','Data Berhasil Ditambahkan');
+    }
+
+    // Search data
+    public function cari(Request $request){
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $data = [
+            'jadwal' => DB::table('jadwals')
+            ->where('hari','like',"%".$cari."%")
+            ->orWhere('tanggal','like',"%".$cari."%")
+            ->orWhere('waktu','like',"%".$cari."%")
+            ->orWhere('ruangan','like',"%".$cari."%")
+            ->get(),
+        ];
+
+
+        // mengirim data pegawai ke view index
+        return view('layout.jadwal', $data);
     }
 
 }

@@ -11,6 +11,14 @@
         </div>
     @endif
     <a href="/jadwal/add" class="btn btn-sm btn-info">Tambah</a><br>
+
+    {{-- search --}}
+    <p>Cari Jadwal :</p>
+    <form action="/jadwal/cari" method="GET">
+        <input type="text" name="cari" placeholder="Cari Jadwal .." value="{{ old('cari') }}">
+        <input type="submit" value="CARI">
+    </form>
+
     <div class="box-body">
         <table class="table table-striped table-hover">
             <thead>

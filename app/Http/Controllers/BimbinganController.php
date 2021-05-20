@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BimbinganModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BimbinganController extends Controller
 {
@@ -44,5 +45,25 @@ class BimbinganController extends Controller
 
         $this->BimbinganModel->addData($data);
         return redirect()->route('bimbingan')->with('pesan', 'Data Berhasil Ditambahkan');
+    }
+
+    // Search data
+    public function cari(Request $request){
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $data = [
+            'bimbingan' => DB::table('bimbingans')
+            ->join('dosens', 'dosens.nip', '=', 'bimbingans.nip')
+            ->join('mahasiswas', 'mahasiswas.nim', '=', 'bimbingans.nim')
+            ->orWhere('nama','like',"%".$cari."%")
+            ->orWhere('nama_dosen','like',"%".$cari."%")
+            ->get(),
+        ];
+
+
+        // mengirim data pegawai ke view index
+        return view('layout.bimbingan', $data);
     }
 }

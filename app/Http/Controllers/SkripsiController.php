@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SkripsiModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SkripsiController extends Controller
 {
@@ -52,5 +53,24 @@ class SkripsiController extends Controller
 
         $this->SkripsiModel->addData($data);
         return redirect()->route('skripsi')->with('pesan','Data Berhasil Ditambahkan');
+    }
+
+    // Search data
+    public function cari(Request $request){
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $data = [
+            'skripsi' => DB::table('skripsis')
+            ->where('judul','like',"%".$cari."%")
+            ->orWhere('abstrak','like',"%".$cari."%")
+            ->orWhere('file','like',"%".$cari."%")
+            ->get(),
+        ];
+
+
+        // mengirim data pegawai ke view index
+        return view('layout.skripsi', $data);
     }
 }

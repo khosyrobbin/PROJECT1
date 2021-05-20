@@ -11,6 +11,14 @@
         </div>
     @endif
     <a href="/dosen/add" class="btn btn-sm btn-info">Tambah</a><br>
+    
+    {{-- search --}}
+    <p>Cari dosen :</p>
+    <form action="/dosen/cari" method="GET">
+        <input type="text" name="cari" placeholder="Cari Dosen .." value="{{ old('cari') }}">
+        <input type="submit" value="CARI">
+    </form>
+
     <div class="box-body">
         <table class="table table-striped table-hover">
             <thead>

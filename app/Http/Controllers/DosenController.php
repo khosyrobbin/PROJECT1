@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DosenModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DosenController extends Controller
 {
@@ -51,6 +52,26 @@ class DosenController extends Controller
 
         $this->DosenModel->addData($data);
         return redirect()->route('dosen')->with('pesan','Data Berhasil Ditambahkan');
+    }
+
+    // Search data
+    public function cari(Request $request){
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $data = [
+            'dosen' => DB::table('dosens')
+            ->where('nama_dosen','like',"%".$cari."%")
+            ->orWhere('nip','like',"%".$cari."%")
+            ->orWhere('jurusan','like',"%".$cari."%")
+            ->orWhere('pendidikan','like',"%".$cari."%")
+            ->get(),
+        ];
+
+
+        // mengirim data pegawai ke view index
+        return view('layout.dosen', $data);
     }
 
 }

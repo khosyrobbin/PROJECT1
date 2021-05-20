@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MahasiswaModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MahasiswaController extends Controller
 {
@@ -48,5 +49,25 @@ class MahasiswaController extends Controller
 
         $this->MahasiswaModel->addData($data);
         return redirect()->route('mahasiswa')->with('pesan','Data Berhasil Ditambahkan');
+    }
+
+    // Search data
+    public function cari(Request $request){
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $data = [
+            'mahasiswa' => DB::table('mahasiswas')
+            ->where('nama','like',"%".$cari."%")
+            ->orWhere('nim','like',"%".$cari."%")
+            ->orWhere('jurusan','like',"%".$cari."%")
+            ->orWhere('no_telpon','like',"%".$cari."%")
+            ->get(),
+        ];
+
+
+        // mengirim data pegawai ke view index
+        return view('layout.mahasiswa', $data);
     }
 }
