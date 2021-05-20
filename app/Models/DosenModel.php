@@ -11,4 +11,8 @@ class DosenModel extends Model
     public function allData(){
         return DB::table('dosens')->get();
     }
+
+    public function addData($data){
+        DB::table('dosens')->insert($data);
+    }
 }

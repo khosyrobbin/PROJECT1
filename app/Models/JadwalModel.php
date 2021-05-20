@@ -11,4 +11,8 @@ class JadwalModel extends Model
     public function allData(){
         return DB::table('jadwals')->get();
     }
+
+    public function addData($data){
+        DB::table('jadwals')->insert($data);
+    }
 }

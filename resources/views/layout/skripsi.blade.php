@@ -2,6 +2,14 @@
 @section('title','Skripsi')
 
 @section('content')
+    {{-- PESAN --}}
+    @if (session('pesan'))
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-check"></i> Sucsess!</h4>
+            {{session('pesan')}}.
+        </div>
+    @endif
     <a href="/skripsi/add" class="btn btn-sm btn-info">Tambah</a><br>
     <table class="table table-bordered">
         <thead>
@@ -18,7 +26,7 @@
                     <td>{{ $no++ }}</td>
                     <td>{{ $data->judul }}</td>
                     <td>{{ $data->abstrak }}</td>
-                    <td><img src="{{ url('file_skripsi/'.$data->file) }}" width="100px"></td>
+                    <td>{{ $data->file }}</td>
                     <td>
                         <a href="/skripsi/detail/{{ $data->id_skripsi }}" class="btn btn-sm btn-warning">DETAIL</a>
                         <a href="" class="btn btn-sm btn-primary">EDIT</a>

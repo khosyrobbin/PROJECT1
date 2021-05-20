@@ -13,6 +13,10 @@ class SkripsiModel extends Model
     }
 
     public function detailData($id_skripsi){
-        return DB::table('skripsis')->where('id_skripsi',$id_skripsi)->first();
+        return DB::table('skripsis')->where('id_skripsi', $id_skripsi)->first();
+    }
+
+    public function addData($data){
+        DB::table('skripsis')->insert($data);
     }
 }

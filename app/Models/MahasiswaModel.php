@@ -11,4 +11,8 @@ class MahasiswaModel extends Model
     public function allData(){
         return DB::table('mahasiswas')->get();
     }
+
+    public function addData($data){
+        DB::table('mahasiswas')->insert($data);
+    }
 }

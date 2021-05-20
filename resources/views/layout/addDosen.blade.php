@@ -19,9 +19,9 @@
 
                     <div class="form-group">
                         <label>Nama Dosen</label>
-                        <input name="nama" class="form-control @error('nama') is-invalid @enderror">
+                        <input name="nama_dosen" class="form-control @error('nama_dosen') is-invalid @enderror">
                         <div class="text-danger">
-                            @error('nama')
+                            @error('nama_dosen')
                                 Nama Salah/Kosong
                             @enderror
                         </div>

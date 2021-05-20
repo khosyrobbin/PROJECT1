@@ -2,6 +2,14 @@
 @section('title','Mahasiswa')
 
 @section('content')
+{{-- PESAN --}}
+    @if (session('pesan'))
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-check"></i> Sucsess!</h4>
+            {{session('pesan')}}.
+        </div>
+    @endif
     <a href="/mahasiswa/add" class="btn btn-sm btn-info">Tambah</a><br>
     <table class="table table-bordered">
         <thead>
@@ -18,7 +26,7 @@
             @foreach ($mahasiswa as $data)
                 <tr>
                     <td>{{ $no++ }}</td>
-                    <td>{{ $data->nip }}</td>
+                    <td>{{ $data->nim }}</td>
                     <td>{{ $data->nama }}</td>
                     <td>{{ $data->jurusan }}</td>
                     <td>{{ $data->no_telpon }}</td>

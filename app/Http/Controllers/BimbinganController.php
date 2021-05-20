@@ -11,7 +11,8 @@ class BimbinganController extends Controller
     {
         $this->BimbinganModel = new BimbinganModel();
     }
-    public function index(){
+    public function index()
+    {
         $data = [
             'bimbingan' => $this->BimbinganModel->allData(),
         ];
@@ -19,15 +20,16 @@ class BimbinganController extends Controller
     }
 
     // add
-    public function add(){
+    public function add()
+    {
         return view('layout.addBimbingan');
     }
     // simpan
-    public function simpan(){
+    public function simpan()
+    {
         Request()->validate([
-            'nip' => 'required|unique:dosens,nip|min:4|max:10',
-            'nim' => 'required|unique:mahasiswas,nim|min:9|max:11',
-            'nama' => 'required|unique:mahasiswas,nama',
+            'nip' => 'required',
+            'nim' => 'required',
             'tanggal' => 'required',
             'keterangan' => 'required',
         ]);
@@ -36,12 +38,11 @@ class BimbinganController extends Controller
         $data = [
             'nip' => Request()->nip,
             'nim' => Request()->nim,
-            'nama' => Request()->nama,
             'tanggal' => Request()->tanggal,
             'keterangan' => Request()->keterangan,
         ];
 
         $this->BimbinganModel->addData($data);
-        return redirect()->route('bimbingan')->with('pesan','Data Berhasil Ditambahkan');
+        return redirect()->route('bimbingan')->with('pesan', 'Data Berhasil Ditambahkan');
     }
 }

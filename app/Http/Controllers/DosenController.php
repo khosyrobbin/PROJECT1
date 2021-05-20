@@ -28,7 +28,7 @@ class DosenController extends Controller
     public function simpan(){
         Request()->validate([
             'nip' => 'required|unique:dosens,nip|min:4|max:10',
-            'nama' => 'required',
+            'nama_dosen' => 'required',
             'jurusan' => 'required',
             'no_telpon' => 'required',
             'pendidikan' => 'required',
@@ -42,7 +42,7 @@ class DosenController extends Controller
 
         $data = [
             'nip' => Request()->nip,
-            'nama' => Request()->nama,
+            'nama_dosen' => Request()->nama_dosen,
             'jurusan' => Request()->jurusan,
             'no_telpon' => Request()->no_telpon,
             'pendidikan' => Request()->pendidikan,

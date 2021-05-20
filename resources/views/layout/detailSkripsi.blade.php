@@ -7,12 +7,12 @@
             <tr>
                 <th width="100px">Judul</th>
                 <th width="30px">:</th>
-                <th>{{$skripsi->judul}}</th>
+                <th>{{ $skripsi->judul }}</th>
             </tr>
             <tr>
                 <th width="100px">Abstrak</th>
                 <th width="30px">:</th>
-                <th>{{$skripsi->abstrak}}</th>
+                <th>{{ $skripsi->abstrak }}</th>
             </tr>
             <tr>
                 <th width="100px">File</th>

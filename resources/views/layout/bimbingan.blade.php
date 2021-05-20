@@ -2,13 +2,20 @@
 @section('title','Bimbingan')
 
 @section('content')
+    {{-- PESAN --}}
+    @if (session('pesan'))
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-check"></i> Sucsess!</h4>
+            {{session('pesan')}}.
+        </div>
+    @endif
     <a href="/bimbingan/add" class="btn btn-sm btn-info">Tambah</a><br>
     <table class="table table-bordered">
         <thead>
             <th>NO</th>
-            <th>NIP</th>
-            <th>NIM</th>
-            <th>NAMA</th>
+            <th>NAMA DOSEN</th>
+            <th>NAMA MAHASISWA</th>
             <th>TANGGAL</th>
             <th>KETERANGAN</th>
             <th>ACTION</th>
@@ -18,8 +25,7 @@
             @foreach ($bimbingan as $data)
                 <tr>
                     <td>{{ $no++ }}</td>
-                    <td>{{ $data->nip }}</td>
-                    <td>{{ $data->nim }}</td>
+                    <td>{{ $data->nama_dosen }}</td>
                     <td>{{ $data->nama }}</td>
                     <td>{{ $data->tanggal }}</td>
                     <td>{{ $data->keterangan }}</td>

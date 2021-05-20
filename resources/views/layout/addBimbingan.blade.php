@@ -27,7 +27,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label>NAMA MAHASISWA</label>
                     <input name="nama" class="form-control @error('nama') is-invalid @enderror">
                     <div class="text-danger">
@@ -35,7 +35,7 @@
                             NAMA Salah/Kosong
                         @enderror
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="form-group">
                     <label>Tanggal</label>

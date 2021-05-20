@@ -24,7 +24,7 @@ class MahasiswaController extends Controller
     // Simpan Data
     public function simpan(){
         Request()->validate([
-            'nim' => 'required|unique:mahasiswas,nim|min:9|max:11',
+            'nim' => 'required|unique:mahasiswas,nim|min:8|max:11',
             'nama' => 'required',
             'jurusan' => 'required',
             'no_telpon' => 'required',

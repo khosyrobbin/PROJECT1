@@ -8,7 +8,16 @@ use Illuminate\Support\Facades\DB;
 
 class BimbinganModel extends Model
 {
+    // protected $table = 'bimbingans';
+
     public function allData(){
-        return DB::table('bimbingans')->get();
+        return DB::table('bimbingans')
+            ->join('dosens', 'dosens.nip', '=', 'bimbingans.nip')
+            ->join('mahasiswas', 'mahasiswas.nim', '=', 'bimbingans.nim')
+            ->get();
+    }
+
+    public function addData($data){
+        DB::table('bimbingans')->insert($data);
     }
 }

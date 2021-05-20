@@ -22,7 +22,7 @@ class SkripsiController extends Controller
     // Detail Data
     public function detail($id_skripsi){
         $data = [
-            'skripsi' => $this->SkripsiModel->allData(),
+            'skripsi' => $this->SkripsiModel->detailData($id_skripsi),
         ];
         return view('layout.detailSkripsi', $data);
     }
