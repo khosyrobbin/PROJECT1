@@ -32,3 +32,4 @@ Route::get('/bimbingan', [BimbinganController::class, 'index']);
 Route::get('/jadwal', [JadwalController::class, 'index']);
 // Skripsi
 Route::get('/skripsi', [SkripsiController::class, 'index']);
+Route::get('/skripsi/detail/{id_skirpsi}', [SkripsiController::class, 'detail']);

@@ -19,7 +19,7 @@
                     <td>{{ $data->abstrak }}</td>
                     <td><img src="{{ url('file_skripsi/'.$data->file) }}" width="100px"></td>
                     <td>
-                        <a href="" class="btn btn-sm btn-warning">DETAIL</a>
+                        <a href="/skripsi/detail/{{ $data->id_skripsi }}" class="btn btn-sm btn-warning">DETAIL</a>
                         <a href="" class="btn btn-sm btn-primary">EDIT</a>
                         <a href="" class="btn btn-sm btn-danger">DELETE</a>
                     </td>

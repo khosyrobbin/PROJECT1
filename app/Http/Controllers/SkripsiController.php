@@ -18,4 +18,12 @@ class SkripsiController extends Controller
         ];
         return view('layout.skripsi', $data);
     }
+
+    // Detail Data
+    public function detail($id_skripsi){
+        $data = [
+            'skripsi' => $this->SkripsiModel->allData(),
+        ];
+        return view('layout.detailSkripsi', $data);
+    }
 }

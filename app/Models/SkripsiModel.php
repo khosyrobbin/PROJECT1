@@ -11,4 +11,8 @@ class SkripsiModel extends Model
     public function allData(){
         return DB::table('skripsis')->get();
     }
+
+    public function detailData($id_skripsi){
+        return DB::table('skripsis')->where('id_skripsi',$id_skripsi)->first();
+    }
 }
