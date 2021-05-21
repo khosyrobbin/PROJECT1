@@ -32,4 +32,8 @@ class BimbinganModel extends Model
     {
         DB::table('bimbingans')->where('id_bimbingan', $id_bimbingan)->update($data);
     }
+
+    public function deleteData($id_bimbingan){
+        DB::table('bimbingans')->where('id_bimbingan', $id_bimbingan)->delete();
+    }
 }

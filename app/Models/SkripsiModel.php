@@ -23,4 +23,8 @@ class SkripsiModel extends Model
     public function editData($id_skripsi, $data){
         DB::table('skripsis')->where('id_skripsi', $id_skripsi)->update($data);
     }
+
+    public function deleteData($id_skripsi){
+        DB::table('skripsis')->where('id_skripsi', $id_skripsi)->delete();
+    }
 }

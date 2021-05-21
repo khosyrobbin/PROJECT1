@@ -97,4 +97,10 @@ class BimbinganController extends Controller
         $this->BimbinganModel->editData($id_bimbingan, $data);
         return redirect()->route('bimbingan')->with('pesan', 'Data Berhasil Diperbarui');
     }
+
+    // delete
+    public function delete($id_bimbingan){
+        $this->BimbinganModel->deleteData($id_bimbingan);
+        return redirect()->route('bimbingan')->with('pesan','Data Berhasil Dihapus');
+    }
 }

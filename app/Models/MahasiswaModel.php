@@ -23,4 +23,8 @@ class MahasiswaModel extends Model
     public function editData($nim, $data){
         DB::table('mahasiswas')->where('nim', $nim)->update($data);
     }
+
+    public function deleteData($nim){
+        DB::table('mahasiswas')->where('nim', $nim)->delete();
+    }
 }

@@ -110,4 +110,10 @@ class DosenController extends Controller
         return redirect()->route('dosen')->with('pesan','Data Berhasil Diperbarui');
     }
 
+    // delete
+    public function delete($nip){
+        $this->DosenModel->deleteData($nip);
+        return redirect()->route('dosen')->with('pesan','Data Berhasil Dihapus');
+    }
+
 }

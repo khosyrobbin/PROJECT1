@@ -23,4 +23,8 @@ class DosenModel extends Model
     public function editData($nip, $data){
         DB::table('dosens')->where('nip', $nip)->update($data);
     }
+
+    public function deleteData($nip){
+        DB::table('dosens')->where('nip', $nip)->delete();
+    }
 }

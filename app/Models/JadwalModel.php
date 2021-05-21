@@ -23,4 +23,8 @@ class JadwalModel extends Model
     public function editData($id_jadwal, $data){
         DB::table('jadwals')->where('id_jadwal', $id_jadwal)->update($data);
     }
+
+    public function deleteData($id_jadwal){
+        DB::table('jadwals')->where('id_jadwal', $id_jadwal)->delete();
+    }
 }

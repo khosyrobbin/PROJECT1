@@ -106,4 +106,10 @@ class MahasiswaController extends Controller
         $this->MahasiswaModel->editData($nim ,$data);
         return redirect()->route('mahasiswa')->with('pesan','Data Berhasil Diperbarui');
     }
+
+    // delete
+    public function delete($nim){
+        $this->MahasiswaModel->deleteData($nim);
+        return redirect()->route('mahasiswa')->with('pesan','Data Berhasil Dihapus');
+    }
 }

@@ -39,12 +39,39 @@
                         <td>
                             <a href="/skripsi/detail/{{ $data->id_skripsi }}" class="btn btn-sm btn-warning">DETAIL</a>
                             <a href="/skripsi/edit/{{ $data->id_skripsi }}" class="btn btn-sm btn-primary">EDIT</a>
-                            <a href="" class="btn btn-sm btn-danger">DELETE</a>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->id_skripsi }}">
+                                DELETE
+                            </button>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
+            {{-- delete notif --}}
+    @foreach ($skripsi as $data)
+        <div class="modal modal-danger fade" id="delete{{ $data->id_skripsi }}">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">PERINGATAN!!</h4>
+              </div>
+              <div class="modal-body">
+                <p>Yakin menghapus data {{ $data->judul }} ?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">NO</button>
+                <a href="/skripsi/delete/{{ $data->id_skripsi }}" class="btn btn-outline">YES</a>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+    @endforeach
+
         <br/>
         Halaman : {{ $skripsi->currentPage() }} <br/>
         Jumlah Data : {{ $skripsi->total() }} <br/>

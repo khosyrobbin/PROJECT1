@@ -92,4 +92,10 @@ class JadwalController extends Controller
         return redirect()->route('jadwal')->with('pesan', 'Data Berhasil DiPerbarui');
     }
 
+    // delete
+    public function delete($id_jadwal){
+        $this->JadwalModel->deleteData($id_jadwal);
+        return redirect()->route('jadwal')->with('pesan','Data Berhasil Dihapus');
+    }
+
 }

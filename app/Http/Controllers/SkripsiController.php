@@ -110,4 +110,10 @@ class SkripsiController extends Controller
         $this->SkripsiModel->editData($id_skripsi, $data);
         return redirect()->route('skripsi')->with('pesan', 'Data Berhasil DiPerbarui');
     }
+
+    // delete
+    public function delete($id_skripsi){
+        $this->SkripsiModel->deleteData($id_skripsi);
+        return redirect()->route('skripsi')->with('pesan','Data Berhasil Dihapus');
+    }
 }

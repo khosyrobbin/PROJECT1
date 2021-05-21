@@ -42,12 +42,39 @@
                         <td><img src="{{ url('foto_mhs/'.$data->foto) }}" width="100px"></td>
                         <td>
                             <a href="/mahasiswa/edit/{{ $data->nim }}" class="btn btn-sm btn-primary">EDIT</a>
-                            <a href="" class="btn btn-sm btn-danger">DELETE</a>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->nim }}">
+                                DELETE
+                            </button>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
+            {{-- delete notif --}}
+    @foreach ($mahasiswa as $data)
+        <div class="modal modal-danger fade" id="delete{{ $data->nim }}">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">PERINGATAN!!</h4>
+              </div>
+              <div class="modal-body">
+                <p>Yakin menghapus data {{ $data->nama }} ?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">NO</button>
+                <a href="/mahasiswa/delete/{{ $data->nim }}" class="btn btn-outline">YES</a>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+    @endforeach
+
         <br/>
         Halaman : {{ $mahasiswa->currentPage() }} <br/>
         Jumlah Data : {{ $mahasiswa->total() }} <br/>
