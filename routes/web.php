@@ -5,6 +5,7 @@ use App\Http\Controllers\DosenController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\SkripsiController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layout.home');
-});
+// Route::get('/', function () {
+//     return view('layout.home');
+// });
 
 // Dosen
 Route::get('/dosen', [DosenController::class, 'index'])->name('dosen');
@@ -67,3 +68,7 @@ Route::post('/skripsi/simpan', [SkripsiController::class, 'simpan']);
 Route::get('/skripsi/edit/{id_skirpsi}', [SkripsiController::class, 'edit']);
 Route::post('/skripsi/update/{id_skirpsi}', [SkripsiController::class, 'update']);
 Route::get('/skripsi/delete/{id_skirpsi}', [SkripsiController::class, 'delete']);
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -55,7 +55,7 @@ class JadwalController extends Controller
             ->orWhere('tanggal','like',"%".$cari."%")
             ->orWhere('waktu','like',"%".$cari."%")
             ->orWhere('ruangan','like',"%".$cari."%")
-            ->get(),
+            ->paginate(5),
         ];
 
 

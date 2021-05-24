@@ -71,7 +71,7 @@ class SkripsiController extends Controller
                 ->where('judul', 'like', "%" . $cari . "%")
                 ->orWhere('abstrak', 'like', "%" . $cari . "%")
                 ->orWhere('file', 'like', "%" . $cari . "%")
-                ->get(),
+                ->paginate(5),
         ];
 
 

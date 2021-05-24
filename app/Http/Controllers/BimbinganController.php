@@ -60,7 +60,7 @@ class BimbinganController extends Controller
                 ->join('mahasiswas', 'mahasiswas.nim', '=', 'bimbingans.nim')
                 ->orWhere('nama', 'like', "%" . $cari . "%")
                 ->orWhere('nama_dosen', 'like', "%" . $cari . "%")
-                ->get(),
+                ->paginate(5),
         ];
 
 

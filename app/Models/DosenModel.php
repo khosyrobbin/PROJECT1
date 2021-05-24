@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class DosenModel extends Model
 {
     public function allData(){
-        return DB::table('dosens')->paginate(3);
+        return DB::table('dosens')->paginate(5);
     }
 
     public function addData($data){

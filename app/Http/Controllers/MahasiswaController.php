@@ -63,7 +63,7 @@ class MahasiswaController extends Controller
             ->orWhere('nim','like',"%".$cari."%")
             ->orWhere('jurusan','like',"%".$cari."%")
             ->orWhere('no_telpon','like',"%".$cari."%")
-            ->get(),
+            ->paginate(5),
         ];
 
 

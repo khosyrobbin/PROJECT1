@@ -66,7 +66,7 @@ class DosenController extends Controller
             ->orWhere('nip','like',"%".$cari."%")
             ->orWhere('jurusan','like',"%".$cari."%")
             ->orWhere('pendidikan','like',"%".$cari."%")
-            ->get(),
+            ->paginate(5),
         ];
 
 
