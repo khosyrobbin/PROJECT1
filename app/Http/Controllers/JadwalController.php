@@ -98,4 +98,13 @@ class JadwalController extends Controller
         return redirect()->route('jadwal')->with('pesan','Data Berhasil Dihapus');
     }
 
+    // Detail
+    public function detail($id_jadwal)
+    {
+        $data = [
+            'jadwal' => $this->JadwalModel->detailData($id_jadwal),
+        ];
+        return view('layout.jadwalDetail', $data);
+    }
+
 }

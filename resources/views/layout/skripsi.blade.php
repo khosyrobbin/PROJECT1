@@ -10,7 +10,15 @@
             {{session('pesan')}}.
         </div>
     @endif
-    <a href="/skripsi/add" class="btn btn-sm btn-info">Tambah</a><br>
+    <td>
+        @if (auth()->user()->level==1)
+
+        @elseif (auth()->user()->level==2)
+            <a href="/skripsi/add" class="btn btn-sm btn-info">Tambah</a><br>
+        @elseif (auth()->user()->level==3)
+
+        @endif
+    </td>
 
     {{-- search --}}
     <p>Cari Skripsi :</p>
@@ -21,27 +29,37 @@
 
     <div class="box-body">
         <table class="table table-striped table-hover">
-            <thead class="thead thead-dark">
+            <thead class=" bg-light-blue-active">
                 <th>NO</th>
+                <th>NAMA</th>
                 <th>JUDUL</th>
                 <th>ABSTRAK</th>
                 <th>FILE</th>
                 <th>ACTION</th>
             </thead>
-            <tbody>
+            <tbody class="table">
                 <?php $no=1; ?>
                 @foreach ($skripsi as $data)
                     <tr>
                         <td>{{ $no++ }}</td>
+                        <td>{{ $data->nama }}</td>
                         <td>{{ $data->judul }}</td>
                         <td>{{ $data->abstrak }}</td>
                         <td>{{ $data->file }}</td>
                         <td>
                             <a href="/skripsi/detail/{{ $data->id_skripsi }}" class="btn btn-sm btn-warning">DETAIL</a>
-                            <a href="/skripsi/edit/{{ $data->id_skripsi }}" class="btn btn-sm btn-primary">EDIT</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->id_skripsi }}">
-                                DELETE
-                            </button>
+
+                            @if (auth()->user()->level==1)
+                                <a href="/skripsi/edit/{{ $data->id_skripsi }}" class="btn btn-sm btn-primary">EDIT</a>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->id_skripsi }}">
+                                    DELETE
+                                </button>
+                            @elseif (auth()->user()->level==2)
+                                <a href="/skripsi/edit/{{ $data->id_skripsi }}" class="btn btn-sm btn-primary">EDIT</a>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->id_skripsi }}">
+                                    DELETE
+                                </button>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

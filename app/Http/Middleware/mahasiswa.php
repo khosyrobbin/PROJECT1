@@ -16,6 +16,9 @@ class mahasiswa
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (auth()->user()->level == 2) {
+            return $next($request);
+        }
+        return redirect('/');
     }
 }

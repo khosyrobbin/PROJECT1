@@ -31,17 +31,17 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>REGISTER</b>SIBD</a>
+    <a href=""><b>REGISTER</b>SIBD</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    {{-- <p class="login-box-msg">Sign in to start your session</p> --}}
 
     <form method="POST" action="{{ route('register') }}">
         @csrf
         <div class="form-group has-feedback">
             <input type="nim" name="nim" class="form-control" placeholder="nim">
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            <span class="glyphicon glyphicon-check form-control-feedback"></span>
                 @error('nim')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -51,7 +51,7 @@
 
         <div class="form-group has-feedback">
             <input type="nama_lengkap" name="nama_lengkap" class="form-control" placeholder="Nama Lengkap">
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 @error('nama_lengkap')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -61,7 +61,7 @@
 
         <div class="form-group has-feedback">
             <input type="tahun" name="tahun" class="form-control" placeholder="Tahun">
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            <span class="glyphicon glyphicon-edit form-control-feedback"></span>
                 @error('tahun')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -71,10 +71,13 @@
 
         <div class="form-group has-feedback">
             <select type="prostud" name="prostud" class="form-control" placeholder="Program Studi">
+                <option value="">--PILIH PROGRAM STUDI--</option>
                 <option value="Teknik Informatika">Teknik Informatika</option>
                 <option value="Teknik Mesin">Teknik Mesin</option>
                 <option value="Teknik Sipil">Teknik Sipil</option>
                 <option value="Teknik Elektro">Teknik Elektro</option>
+                <option value="Teknik Kimia">Teknik Kimia</option>
+
             </select>
             {{-- <input type="prostud" name="prostud" class="form-control" placeholder="Program Studi">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -87,7 +90,7 @@
 
         <div class="form-group has-feedback">
             <input type="name" name="name" class="form-control" placeholder="Username">
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

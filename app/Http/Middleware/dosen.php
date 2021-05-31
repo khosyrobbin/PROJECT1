@@ -16,6 +16,9 @@ class dosen
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (auth()->user()->level == 3) {
+            return $next($request);
+        }
+        return redirect('/');
     }
 }

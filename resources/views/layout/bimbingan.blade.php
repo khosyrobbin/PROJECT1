@@ -10,7 +10,13 @@
             {{session('pesan')}}.
         </div>
     @endif
-    <a href="/bimbingan/add" class="btn btn-sm btn-info">Tambah</a><br>
+    <td>
+        @if (auth()->user()->level==1)
+            <a href="/bimbingan/add" class="btn btn-sm btn-info">Tambah</a><br>
+        @elseif (auth()->user()->level==3)
+            <a href="/bimbingan/add" class="btn btn-sm btn-info">Tambah</a><br>
+        @endif
+    </td>
 
     {{-- search --}}
     <p>Cari Bimbingan :</p>
@@ -21,7 +27,7 @@
 
     <nav class="box-body">
         <table class="table table-striped table-hover">
-            <thead>
+            <thead class=" bg-light-blue-active">
                 <th>NO</th>
                 <th>NAMA DOSEN</th>
                 <th>NAMA MAHASISWA</th>
@@ -29,7 +35,7 @@
                 <th>KETERANGAN</th>
                 <th>ACTION</th>
             </thead>
-            <tbody>
+            <tbody class="table">
                 <?php $no=1; ?>
                 @foreach ($bimbingan as $data)
                     <tr>
@@ -39,10 +45,17 @@
                         <td>{{ $data->tanggal }}</td>
                         <td>{{ $data->keterangan }}</td>
                         <td>
+                            @if (auth()->user()->level==1)
                             <a href="/bimbingan/edit/{{ $data->id_bimbingan }}" class="btn btn-sm btn-primary">EDIT</a>
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->id_bimbingan }}">
-                                DELETE
-                            </button>
+                                    DELETE
+                                </button>
+                            @elseif (auth()->user()->level==3)
+                                <a href="/bimbingan/edit/{{ $data->id_bimbingan }}" class="btn btn-sm btn-primary">EDIT</a>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->id_bimbingan }}">
+                                    DELETE
+                                </button>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

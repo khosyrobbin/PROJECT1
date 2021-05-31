@@ -10,7 +10,11 @@
             {{session('pesan')}}.
         </div>
     @endif
-    <a href="/dosen/add" class="btn btn-sm btn-info">Tambah</a><br>
+    <td>
+        @if (auth()->user()->level==1)
+        <a href="/dosen/add" class="btn btn-sm btn-info">Tambah</a><br>
+        @endif
+    </td>
 
     {{-- search --}}
     <p>Cari dosen :</p>
@@ -21,7 +25,7 @@
 
     <div class="box-body">
         <table class="table table-striped table-hover">
-            <thead>
+            <thead class=" bg-light-blue-active">
                 <th>NO</th>
                 <th>NIP</th>
                 <th>NAMA</th>
@@ -31,7 +35,7 @@
                 <th>FOTO</th>
                 <th>ACTION</th>
             </thead>
-            <tbody>
+            <tbody class="table">
                 <?php $no=1; ?>
                 @foreach ($dosen as $data)
                     <tr>
@@ -43,10 +47,16 @@
                         <td>{{ $data->no_telpon }}</td>
                         <td><img src="{{ url('foto_dosen/'.$data->foto) }}" width="100px"></td>
                         <td>
-                            <a href="/dosen/edit/{{ $data->nip }}" class="btn btn-sm btn-primary">EDIT</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->nip }}">
-                                DELETE
-                            </button>
+                            <a href="/dosen/detail/{{ $data->nip }}" class="btn btn-sm btn-warning">DETAIL</a>
+
+                            @if (auth()->user()->level==1)
+                                <a href="/dosen/edit/{{ $data->nip }}" class="btn btn-sm btn-primary">EDIT</a>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->nip }}">
+                                    DELETE
+                                </button>
+                            @elseif (auth()->user()->level==2)
+                            @elseif (auth()->user()->level==3)
+                            @endif
                         </td>
                     </tr>
                 @endforeach

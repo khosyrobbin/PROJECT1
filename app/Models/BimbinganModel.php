@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Brick\Math\BigInteger;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -9,6 +10,11 @@ use Illuminate\Support\Facades\DB;
 class BimbinganModel extends Model
 {
     // protected $table = 'bimbingans';
+    // public $incrementing = false;
+    // protected $primariKey = 'id_bimbingan';
+    protected $cast = [
+        'id_bimbingan' => 'BigInteger',
+    ];
 
     public function allData()
     {
@@ -35,5 +41,12 @@ class BimbinganModel extends Model
 
     public function deleteData($id_bimbingan){
         DB::table('bimbingans')->where('id_bimbingan', $id_bimbingan)->delete();
+    }
+
+    public function tambah(){
+        return DB::table('bimbingans')
+            ->join('dosens', 'dosens.nip', '=', 'bimbingans.nip')
+            ->join('mahasiswas', 'mahasiswas.nim', '=', 'bimbingans.nim')
+            ->get();
     }
 }

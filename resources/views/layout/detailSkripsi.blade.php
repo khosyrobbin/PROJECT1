@@ -5,6 +5,11 @@
     <div>
         <table class="table">
             <tr>
+                <th width="100px">Nama Mahasiswa</th>
+                <th width="30px">:</th>
+                <th>{{ $skripsi->nama }}</th>
+            </tr>
+            <tr>
                 <th width="100px">Judul</th>
                 <th width="30px">:</th>
                 <th>{{ $skripsi->judul }}</th>

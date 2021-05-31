@@ -9,11 +9,15 @@ use Illuminate\Support\Facades\DB;
 class SkripsiModel extends Model
 {
     public function allData(){
-        return DB::table('skripsis')->paginate(5);
+        return DB::table('skripsis')
+        ->join('mahasiswas', 'mahasiswas.nim', '=', 'skripsis.nim')
+        ->paginate(5);
     }
 
     public function detailData($id_skripsi){
-        return DB::table('skripsis')->where('id_skripsi', $id_skripsi)->first();
+        return DB::table('skripsis')->where('id_skripsi', $id_skripsi)
+        ->join('mahasiswas', 'mahasiswas.nim', '=', 'skripsis.nim')
+        ->first();
     }
 
     public function addData($data){
@@ -26,5 +30,11 @@ class SkripsiModel extends Model
 
     public function deleteData($id_skripsi){
         DB::table('skripsis')->where('id_skripsi', $id_skripsi)->delete();
+    }
+
+    public function tambah(){
+        return DB::table('skripsis')
+        ->join('mahasiswas', 'mahasiswas.nim', '=', 'skripsis.nim')
+        ->get();
     }
 }

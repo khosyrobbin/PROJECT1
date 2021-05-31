@@ -7,9 +7,16 @@
     <div class="content" style="height:600px">
         <div class="rows">
             <div class="col-sm-6">
+
                 <div class="form-group">
                     <label>NIP</label>
                     <input name="nip" class="form-control @error('nip') is-invalid @enderror">
+                    {{-- <select name="nip" id="nip" class="form-control @error('nip') is-invalid @enderror">
+                        <option value="">--PILIH NIP--</option>
+                        @foreach ($bimbingan as $item)
+                            <option value="{{$item->nip}}">{{$item->nama_dosen}}</option>
+                        @endforeach
+                    </select> --}}
                     <div class="text-danger">
                         @error('nip')
                             NIP Salah/Kosong
@@ -19,7 +26,13 @@
 
                 <div class="form-group">
                     <label>NIM</label>
-                    <input name="nim" class="form-control @error('nim') is-invalid @enderror">
+                    {{-- <input name="nim" class="form-control @error('nim') is-invalid @enderror"> --}}
+                    <select name="nim" id="nim" class="form-control" @error('nim') is-invalid @enderror">
+                        <option value="">--PILIH NIM--</option>
+                        @foreach ($bimbingan as $data)
+                            <option value="{{$data->nim}}">{{$data->nim}}-{{$data->nama}}</option>
+                        @endforeach
+                    </select>
                     <div class="text-danger">
                         @error('nim')
                             NIM Salah/Kosong

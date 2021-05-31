@@ -8,6 +8,22 @@
             <div class="rows">
                 <div class="col-sm-6">
                     <div class="form-group">
+                        <label>NIM</label>
+                        {{-- <input name="nim" class="form-control @error('nim') is-invalid @enderror"> --}}
+                        <select name="nim" id="nim" class="form-control @error('nim') is-invalid @enderror">
+                            <option value="">--PILIH--</option>
+                            @foreach ($skripsi as $data)
+                                <option value="{{$data->nim}}">{{$data->nama}} - {{$data->nim}}</option>
+                            @endforeach
+                        </select>
+                        <div class="text-danger">
+                            @error('nim')
+                                NIM Salah/Kosong
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label>Judul</label>
                         <input name="judul" class="form-control @error('judul') is-invalid @enderror">
                         <div class="text-danger">

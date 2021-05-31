@@ -35,7 +35,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>SI</b>BD</span>
       <!-- logo for regular state and mobile devices -->
@@ -64,8 +64,17 @@
               <!-- User image -->
               <li class="user-header">
                 <p>
-                    {{ Auth::user()->name }} <br>
-                    {{ Auth::user()->email }}
+                    {{ Auth::user()->nama_lengkap }} <br>
+                    {{ Auth::user()->email }} <br>
+                    <p>
+                        @if (auth()->user()->level==1)
+                        Admin
+                        @elseif (auth()->user()->level==2)
+                        Mahasiswa
+                        @elseif (auth()->user()->level==3)
+                        Dosen
+                        @endif
+                    </p>
                 </p>
               </li>
 
@@ -98,7 +107,15 @@
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name }}</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <a href="#"><i class="fa fa-circle text-success"></i>
+                @if (auth()->user()->level==1)
+                    Admin
+                @elseif (auth()->user()->level==2)
+                    Mahasiswa
+                @elseif (auth()->user()->level==3)
+                    Dosen
+                @endif
+           </a>
         </div>
       </div>
 

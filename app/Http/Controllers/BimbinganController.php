@@ -23,7 +23,10 @@ class BimbinganController extends Controller
     // add
     public function add()
     {
-        return view('layout.addBimbingan');
+        $data = [
+            'bimbingan' => $this->BimbinganModel->tambah(),
+        ];
+        return view('layout.addBimbingan', $data);
     }
     // simpan
     public function simpan()
@@ -74,7 +77,8 @@ class BimbinganController extends Controller
         $data = [
             'bimbingan' => $this->BimbinganModel->detailData($id_bimbingan),
         ];
-        return view('layout.editBimbingan', $data);
+        dd($data);
+        // return view('layout.editBimbingan', $data);
     }
 
     public function update($id_bimbingan)
@@ -103,4 +107,5 @@ class BimbinganController extends Controller
         $this->BimbinganModel->deleteData($id_bimbingan);
         return redirect()->route('bimbingan')->with('pesan','Data Berhasil Dihapus');
     }
+
 }

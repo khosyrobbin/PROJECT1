@@ -19,7 +19,7 @@
 
                     <div class="form-group">
                         <label>Tanggal</label>
-                        <input name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" type="date">
+                        <input name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" type="date" min="2021-05-31" >
                         <div class="text-danger">
                             @error('tanggal')
                                 Tanggal Salah/Kosong

@@ -31,17 +31,17 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>LOGIN</b>SIBD</a>
+    <a href=""><b>LOGIN</b>SIBD</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg"></p>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
       <div class="form-group has-feedback">
         <input type="name" name="name" class="form-control" placeholder="Username">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
             @error('name')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

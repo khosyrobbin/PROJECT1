@@ -31,6 +31,7 @@ Route::post('/dosen/simpan', [DosenController::class, 'simpan']);
 Route::get('/dosen/edit/{nip}', [DosenController::class, 'edit']);
 Route::post('/dosen/update/{nip}', [DosenController::class, 'update']);
 Route::get('/dosen/delete/{nip}', [DosenController::class, 'delete']);
+Route::get('/dosen/detail/{nip}', [DosenController::class, 'detail']);
 
 // Mahasiswa
 Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
@@ -40,6 +41,7 @@ Route::post('/mahasiswa/simpan', [MahasiswaController::class, 'simpan']);
 Route::get('/mahasiswa/edit/{nim}', [MahasiswaController::class, 'edit']);
 Route::post('/mahasiswa/update/{nim}', [MahasiswaController::class, 'update']);
 Route::get('/mahasiswa/delete/{nim}', [MahasiswaController::class, 'delete']);
+Route::get('/mahasiswa/detail/{nim}', [MahasiswaController::class, 'detail']);
 
 // Bimbingan
 Route::get('/bimbingan', [BimbinganController::class, 'index'])->name('bimbingan');
@@ -58,6 +60,7 @@ Route::post('/jadwal/simpan', [JadwalController::class, 'simpan']);
 Route::get('/jadwal/edit/{id_jadwal}', [JadwalController::class, 'edit']);
 Route::post('/jadwal/update/{id_jadwal}', [JadwalController::class, 'update']);
 Route::get('/jadwal/delete/{id_jadwal}', [JadwalController::class, 'delete']);
+Route::get('/jadwal/detail/{id_jadwal}', [JadwalController::class, 'detail']);
 
 // Skripsi
 Route::get('/skripsi', [SkripsiController::class, 'index'])->name('skripsi');

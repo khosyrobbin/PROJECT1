@@ -19,7 +19,7 @@
 
                     <div class="form-group">
                         <label>Tanggal</label>
-                        <input name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{$jadwal->tanggal}}">
+                        <input name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" type="date" min="2021-05-31" value="{{$jadwal->tanggal}}">
                         <div class="text-danger">
                             @error('tanggal')
                                 Tanggal Salah/Kosong
@@ -29,7 +29,7 @@
 
                     <div class="form-group">
                         <label>Waktu</label>
-                        <input type="waktu" name="waktu" class="form-control @error('waktu') is-invalid @enderror" value="{{$jadwal->waktu}}">
+                        <input type="time" name="waktu" class="form-control @error('waktu') is-invalid @enderror" value="{{$jadwal->waktu}}">
                         <div class="text-danger">
                             @error('waktu')
                                 Waktu Salah/Kosong

@@ -116,4 +116,13 @@ class DosenController extends Controller
         return redirect()->route('dosen')->with('pesan','Data Berhasil Dihapus');
     }
 
+    // Detail
+    public function detail($nip)
+    {
+        $data = [
+            'dosen' => $this->DosenModel->detailData($nip),
+        ];
+        return view('layout.dosenDetail', $data);
+    }
+
 }

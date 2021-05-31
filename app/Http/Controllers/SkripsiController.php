@@ -33,12 +33,16 @@ class SkripsiController extends Controller
     // add
     public function add()
     {
-        return view('layout.addSkripsi');
+        $data = [
+            'skripsi' => $this->SkripsiModel->tambah(),
+        ];
+        return view('layout.addSkripsi', $data);
     }
     // simpan
     public function simpan()
     {
         Request()->validate([
+            'nim' => 'required',
             'judul' => 'required',
             'abstrak' => 'required',
             'file' => 'required|mimes:pdf|max:1024',
@@ -50,6 +54,7 @@ class SkripsiController extends Controller
         $file->move(public_path('file_skripsi'), $fileName);
 
         $data = [
+            'nim' => Request()->nim,
             'judul' => Request()->judul,
             'abstrak' => Request()->abstrak,
             'file' => $fileName,
@@ -68,9 +73,10 @@ class SkripsiController extends Controller
         // mengambil data dari table pegawai sesuai pencarian data
         $data = [
             'skripsi' => DB::table('skripsis')
+                ->join('mahasiswas', 'mahasiswas.nim', '=', 'skripsis.nim')
                 ->where('judul', 'like', "%" . $cari . "%")
                 ->orWhere('abstrak', 'like', "%" . $cari . "%")
-                ->orWhere('file', 'like', "%" . $cari . "%")
+                ->orWhere('nama', 'like', "%" . $cari . "%")
                 ->paginate(5),
         ];
 

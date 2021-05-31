@@ -10,7 +10,13 @@
             {{session('pesan')}}.
         </div>
     @endif
-    <a href="/jadwal/add" class="btn btn-sm btn-info">Tambah</a><br>
+    <td>
+        @if (auth()->user()->level==1)
+            <a href="/jadwal/add" class="btn btn-sm btn-info">Tambah</a><br>
+        @elseif (auth()->user()->level==3)
+            <a href="/jadwal/add" class="btn btn-sm btn-info">Tambah</a><br>
+        @endif
+    </td>
 
     {{-- search --}}
     <p>Cari Jadwal :</p>
@@ -21,7 +27,7 @@
 
     <div class="box-body">
         <table class="table table-striped table-hover">
-            <thead>
+            <thead class=" bg-light-blue-active">
                 <th>NO</th>
                 <th>HARI</th>
                 <th>TANGGAL</th>
@@ -29,7 +35,7 @@
                 <th>RUANGAN</th>
                 <th>ACTION</th>
             </thead>
-            <tbody>
+            <tbody class="table">
                 <?php $no=1; ?>
                 @foreach ($jadwal as $data)
                     <tr>
@@ -39,10 +45,16 @@
                         <td>{{ $data->waktu }}</td>
                         <td>{{ $data->ruangan }}</td>
                         <td>
-                            <a href="/jadwal/edit/{{ $data->id_jadwal }}" class="btn btn-sm btn-primary">EDIT</a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->id_jadwal }}">
-                                DELETE
-                            </button>
+                            <a href="/jadwal/detail/{{ $data->id_jadwal }}" class="btn btn-sm btn-warning">DETAIL</a>
+                            
+                            @if (auth()->user()->level==1)
+                                <a href="/jadwal/edit/{{ $data->id_jadwal }}" class="btn btn-sm btn-primary">EDIT</a>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->id_jadwal }}">
+                                    DELETE
+                                </button>
+                            @elseif (auth()->user()->level==3)
+                                <a href="/jadwal/edit/{{ $data->id_jadwal }}" class="btn btn-sm btn-primary">EDIT</a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
