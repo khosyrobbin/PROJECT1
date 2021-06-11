@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MahasiswaModel;
 use App\Models\SkripsiModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +12,7 @@ class SkripsiController extends Controller
     public function __construct()
     {
         $this->SkripsiModel = new SkripsiModel();
+        $this->MahasiswaModel = new MahasiswaModel();
     }
 
     public function index()
@@ -18,6 +20,7 @@ class SkripsiController extends Controller
         $data = [
             'skripsi' => $this->SkripsiModel->allData(),
         ];
+        // dd($data);
         return view('layout.skripsi', $data);
     }
 
@@ -35,6 +38,7 @@ class SkripsiController extends Controller
     {
         $data = [
             'skripsi' => $this->SkripsiModel->tambah(),
+            'mahasiswa' => $this->MahasiswaModel->allData(),
         ];
         return view('layout.addSkripsi', $data);
     }

@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\BimbinganController;
+use App\Http\Controllers\BimbingansController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\SkripsiController;
+use App\Http\Controllers\TanggapanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -72,6 +75,26 @@ Route::get('/skripsi/edit/{id_skirpsi}', [SkripsiController::class, 'edit']);
 Route::post('/skripsi/update/{id_skirpsi}', [SkripsiController::class, 'update']);
 Route::get('/skripsi/delete/{id_skirpsi}', [SkripsiController::class, 'delete']);
 
+// DOSBIM
+Route::get('/dosbim', [BimbinganController::class, 'dosbim']);
+
+
+// Tanggapan
+Route::get('/tanggapan', [TanggapanController::class, 'index'])->name('tanggapan');
+
+// User
+Route::get('/user', [UserController::class, 'index'])->name('user');
+Route::get('/user/cari', [UserController::class, 'cari']);
+Route::get('/user/add', [UserController::class, 'add']);
+Route::post('/user/simpan', [UserController::class, 'simpan']);
+
+// forget password
+Route::get('/forget', function () {
+    return view('layout.lupaLogin');
+});
+
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route::resource('bimbingan', BimbingansController::class);

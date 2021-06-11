@@ -10,11 +10,11 @@
 
                 <div class="form-group">
                     <label>NIP</label>
-                    <input name="nip" class="form-control @error('nip') is-invalid @enderror">
+                    <input name="nip" class="form-control @error('nip') is-invalid @enderror" value="{{ Auth::user()->nip }}" readonly>
                     {{-- <select name="nip" id="nip" class="form-control @error('nip') is-invalid @enderror">
-                        <option value="">--PILIH NIP--</option>
-                        @foreach ($bimbingan as $item)
-                            <option value="{{$item->nip}}">{{$item->nama_dosen}}</option>
+                        <option value="">Pilih Dosen</option>
+                        @foreach ($dosen as $data)
+                            <option value="{{$data->nip}}">{{$data->nama_dosen}} - {{$data->nip}}</option>
                         @endforeach
                     </select> --}}
                     <div class="text-danger">
@@ -28,9 +28,9 @@
                     <label>NIM</label>
                     {{-- <input name="nim" class="form-control @error('nim') is-invalid @enderror"> --}}
                     <select name="nim" id="nim" class="form-control" @error('nim') is-invalid @enderror">
-                        <option value="">--PILIH NIM--</option>
-                        @foreach ($bimbingan as $data)
-                            <option value="{{$data->nim}}">{{$data->nim}}-{{$data->nama}}</option>
+                        <option value="">Pilih Mahasiswa</option>
+                        @foreach ($mahasiswa as $data)
+                            <option value="{{$data->nim}}">{{$data->nama}} - {{$data->nim}}</option>
                         @endforeach
                     </select>
                     <div class="text-danger">
@@ -52,7 +52,7 @@
 
                 <div class="form-group">
                     <label>Tanggal</label>
-                    <input name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" type="date">
+                    <input name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" type="date" min="2021-06-11">
                     <div class="text-danger">
                         @error('tanggal')
                             tanggal Salah/Kosong

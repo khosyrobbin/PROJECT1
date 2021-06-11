@@ -17,15 +17,15 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>Tanggal</label>
-                        <input name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" type="date" min="2021-05-31" value="{{$jadwal->tanggal}}">
+                        <input name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" type="date" min="2021-06-04" value="{{$jadwal->tanggal}}">
                         <div class="text-danger">
                             @error('tanggal')
                                 Tanggal Salah/Kosong
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="form-group">
                         <label>Waktu</label>

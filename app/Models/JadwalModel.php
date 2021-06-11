@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\DB;
 class JadwalModel extends Model
 {
     public function allData(){
-        return DB::table('jadwals')->paginate(5);
+        return DB::table('jadwals')
+        ->join('bimbingans', 'bimbingans.id_bimbingan', '=', 'jadwals.id_bimbingan')
+        ->paginate(5);
     }
 
     public function addData($data){
@@ -26,5 +28,11 @@ class JadwalModel extends Model
 
     public function deleteData($id_jadwal){
         DB::table('jadwals')->where('id_jadwal', $id_jadwal)->delete();
+    }
+
+    public function tambah(){
+        return DB::table('jadwals')
+        ->join('bimbingans', 'bimbingans.id_bimbingan', '=', 'jadwals.id_bimbingan')
+        ->get();
     }
 }

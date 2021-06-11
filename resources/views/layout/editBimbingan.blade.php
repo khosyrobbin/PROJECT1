@@ -7,29 +7,44 @@
         <div class="content" style="height:600px">
             <div class="rows">
                 <div class="col-sm-6">
-                    <div class="form-group">
+
+                    {{-- <div class="form-group">
                         <label>NIP</label>
                         <input name="nip" class="form-control @error('nip') is-invalid @enderror" value="{{$bimbingan->nip}}" readonly>
+                        <select name="nip" id="nip" class="form-control @error('nip') is-invalid @enderror">
+                            @foreach ($dosen as $d)
+                                <option value="{{$d->nip}}" @if ($bimbingan->nip==$d->nip)
+                                    selected = 'selected'
+                                @endif>{{$d->nama_dosen}}-{{$d->nip}}</option>
+                            @endforeach
+                        </select>
                         <div class="text-danger">
                             @error('nip')
                                 NIP Salah/Kosong
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>NIM</label>
                         <input name="nim" class="form-control @error('nim') is-invalid @enderror" value="{{$bimbingan->nim}}" readonly>
+                        <select name="nim" id="nim" class="form-control" @error('nim') is-invalid @enderror">
+                            @foreach ($mahasiswa as $mhs)
+                                <option value="{{$mhs->nim}}" @if ($bimbingan->nim==$mhs->nim)
+                                    selected = 'selected'
+                                @endif>{{$mhs->nama}}-{{$mhs->nim}}</option>
+                            @endforeach
+                        </select>
                         <div class="text-danger">
                             @error('nim')
                                 NIM Salah/Kosong
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="form-group">
                         <label>Tanggal</label>
-                        <input name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" type="date" value="{{$bimbingan->tanggal}}">
+                        <input name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" type="date" min="2021-06-11" value="{{$bimbingan->tanggal}}">
                         <div class="text-danger">
                             @error('tanggal')
                                 tanggal Salah/Kosong

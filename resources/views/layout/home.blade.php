@@ -16,7 +16,6 @@
         Level           : Admin
         @elseif (auth()->user()->level==2)
         NIM             :  {{ Auth::user()->nim }} <br><br>
-        Prodi           :  {{ Auth::user()->prostud }} <br><br>
         Level           : Mahasiswa
         @elseif (auth()->user()->level==3)
         Level           : Dosen

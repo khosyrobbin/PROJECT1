@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Brick\Math\BigInteger;
+// use Brick\Math\BigInteger;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -12,9 +12,9 @@ class BimbinganModel extends Model
     // protected $table = 'bimbingans';
     // public $incrementing = false;
     // protected $primariKey = 'id_bimbingan';
-    protected $cast = [
-        'id_bimbingan' => 'BigInteger',
-    ];
+    // protected $cast = [
+    //     'id_bimbingan' => 'BigInteger',
+    // ];
 
     public function allData()
     {

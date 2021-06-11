@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BimbinganModel;
 use App\Models\JadwalModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +12,7 @@ class JadwalController extends Controller
     public function __construct()
     {
         $this->JadwalModel = new JadwalModel();
+        $this->BimbinganModel = new BimbinganModel();
     }
     public function index(){
         $data = [
@@ -20,23 +22,30 @@ class JadwalController extends Controller
     }
     // add
     public function add(){
-        return view('layout.addJadwal');
+        $data = [
+            'jadwal' => $this->JadwalModel->tambah(),
+            'bimbingan' => $this->BimbinganModel->allData(),
+
+        ];
+        return view('layout.addJadwal', $data);
     }
     // simpan
     public function simpan(){
         Request()->validate([
             'hari' => 'required',
-            'tanggal' => 'required',
+            // 'tanggal' => 'required',
             'waktu' => 'required',
             'ruangan' => 'required',
+            'id_bimbingan' => 'required',
         ]);
 
         //Create
         $data = [
             'hari' => Request()->hari,
-            'tanggal' => Request()->tanggal,
+            // 'tanggal' => Request()->tanggal,
             'waktu' => Request()->waktu,
             'ruangan' => Request()->ruangan,
+            'id_bimbingan' => Request()->id_bimbingan,
         ];
 
         $this->JadwalModel->addData($data);
@@ -51,10 +60,10 @@ class JadwalController extends Controller
         // mengambil data dari table pegawai sesuai pencarian data
         $data = [
             'jadwal' => DB::table('jadwals')
+            ->join('bimbingans', 'bimbingans.id_bimbingan', '=', 'jadwals.id_bimbingan')
             ->where('hari','like',"%".$cari."%")
-            ->orWhere('tanggal','like',"%".$cari."%")
-            ->orWhere('waktu','like',"%".$cari."%")
             ->orWhere('ruangan','like',"%".$cari."%")
+            ->orWhere('nim','like',"%".$cari."%")
             ->paginate(5),
         ];
 
@@ -76,14 +85,14 @@ class JadwalController extends Controller
     {
         Request()->validate([
             'hari' => 'required',
-            'tanggal' => 'required',
+            // 'tanggal' => 'required',
             'waktu' => 'required',
             'ruangan' => 'required',
         ]);
 
         $data = [
             'hari' => Request()->hari,
-            'tanggal' => Request()->tanggal,
+            // 'tanggal' => Request()->tanggal,
             'waktu' => Request()->waktu,
             'ruangan' => Request()->ruangan,
         ];

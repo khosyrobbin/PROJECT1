@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\BimbinganModel;
+use App\Models\MahasiswaModel;
+use App\Models\DosenModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,12 +13,15 @@ class BimbinganController extends Controller
     public function __construct()
     {
         $this->BimbinganModel = new BimbinganModel();
+        $this->MahasiswaModel = new MahasiswaModel();
+        $this->DosenModel = new DosenModel();
     }
     public function index()
     {
         $data = [
             'bimbingan' => $this->BimbinganModel->allData(),
         ];
+        // dd($data);
         return view('layout.bimbingan', $data);
     }
 
@@ -25,6 +30,8 @@ class BimbinganController extends Controller
     {
         $data = [
             'bimbingan' => $this->BimbinganModel->tambah(),
+            'mahasiswa' => $this->MahasiswaModel->allData(),
+            'dosen' => $this->DosenModel->allData(),
         ];
         return view('layout.addBimbingan', $data);
     }
@@ -33,7 +40,7 @@ class BimbinganController extends Controller
     {
         Request()->validate([
             'nip' => 'required',
-            'nim' => 'required',
+            'nim' => 'required|unique:bimbingans,nim',
             'tanggal' => 'required',
             'keterangan' => 'required',
         ]);
@@ -76,24 +83,28 @@ class BimbinganController extends Controller
     {
         $data = [
             'bimbingan' => $this->BimbinganModel->detailData($id_bimbingan),
+            'mahasiswa' => $this->MahasiswaModel->allData(),
+            'dosen' => $this->DosenModel->allData(),
         ];
-        dd($data);
-        // return view('layout.editBimbingan', $data);
+        // dd($data);
+        return view('layout.editBimbingan', $data);
+        // $bimbingan = BimbinganModel::find($id_bimbingan);
+        // return view('layout.editBimbingan', compact('bimbingan'));
     }
 
     public function update($id_bimbingan)
     {
         Request()->validate([
-            'nip' => 'required',
-            'nim' => 'required',
+            // 'nip' => 'required',
+            // 'nim' => 'required|unique:bimbingans,nim',
             'tanggal' => 'required',
             'keterangan' => 'required',
         ]);
 
         //create
         $data = [
-            'nip' => Request()->nip,
-            'nim' => Request()->nim,
+            // 'nip' => Request()->nip,
+            // 'nim' => Request()->nim,
             'tanggal' => Request()->tanggal,
             'keterangan' => Request()->keterangan,
         ];
@@ -106,6 +117,14 @@ class BimbinganController extends Controller
     public function delete($id_bimbingan){
         $this->BimbinganModel->deleteData($id_bimbingan);
         return redirect()->route('bimbingan')->with('pesan','Data Berhasil Dihapus');
+    }
+
+    // DosBim
+    public function dosbim(){
+        $data = [
+            'bimbingan' => $this->BimbinganModel->allData(),
+        ];
+        return view('layout.dosbim', $data);
     }
 
 }

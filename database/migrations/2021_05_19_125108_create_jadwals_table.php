@@ -18,6 +18,7 @@ class CreateJadwalsTable extends Migration
             $table->string('ruangan');
             $table->time('waktu');
             $table->string('hari');
+            $table->date('tanggal');
             $table->timestamps();
         });
     }

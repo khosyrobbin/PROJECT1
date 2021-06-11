@@ -33,7 +33,12 @@
                 <th>TANGGAL</th>
                 <th>WAKTU</th>
                 <th>RUANGAN</th>
-                <th>ACTION</th>
+                <th>NIM MAHASISWA</th>
+                @if (auth()->user()->level==1)
+
+                @elseif (auth()->user()->level==3)
+                    <th>ACTION</th>
+                @endif
             </thead>
             <tbody class="table">
                 <?php $no=1; ?>
@@ -44,9 +49,10 @@
                         <td>{{ $data->tanggal }}</td>
                         <td>{{ $data->waktu }}</td>
                         <td>{{ $data->ruangan }}</td>
+                        <td>{{ $data->nim }}</td>
                         <td>
-                            <a href="/jadwal/detail/{{ $data->id_jadwal }}" class="btn btn-sm btn-warning">DETAIL</a>
-                            
+                            {{-- <a href="/jadwal/detail/{{ $data->id_jadwal }}" class="btn btn-sm btn-warning">DETAIL</a> --}}
+
                             @if (auth()->user()->level==1)
                                 <a href="/jadwal/edit/{{ $data->id_jadwal }}" class="btn btn-sm btn-primary">EDIT</a>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->id_jadwal }}">

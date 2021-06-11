@@ -9,13 +9,13 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>NIM</label>
-                        {{-- <input name="nim" class="form-control @error('nim') is-invalid @enderror"> --}}
-                        <select name="nim" id="nim" class="form-control @error('nim') is-invalid @enderror">
-                            <option value="">--PILIH--</option>
-                            @foreach ($skripsi as $data)
+                        <input name="nim" class="form-control @error('nim') is-invalid @enderror" value="{{ Auth::user()->nim }}" readonly>
+                        {{-- <select name="nim" id="nim" class="form-control @error('nim') is-invalid @enderror">
+                            <option value="1941720011">1941720011</option>
+                            @foreach ($mahasiswa as $data)
                                 <option value="{{$data->nim}}">{{$data->nama}} - {{$data->nim}}</option>
                             @endforeach
-                        </select>
+                        </select> --}}
                         <div class="text-danger">
                             @error('nim')
                                 NIM Salah/Kosong

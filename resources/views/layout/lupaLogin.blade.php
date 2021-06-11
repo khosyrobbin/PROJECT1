@@ -31,10 +31,12 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href=""><b>LOGIN</b>SIBD</a>
+    <a href=""><b>LOGIN</b>SIBD</a><br>
+    <h2>Silahkan Hubungi Admin</h2>
+    <h2>081345678999</h2>
   </div>
   <!-- /.login-logo -->
-  <div class="login-box-body">
+  {{-- <div class="login-box-body">
     <p class="login-box-msg"></p>
 
     <form method="POST" action="{{ route('login') }}">
@@ -73,11 +75,11 @@
 
     <!-- /.social-auth-links -->
 
-    <a href="{{ route('register') }}" class="text-center">Register Mahasiswa</a><br>
-    <a href="/forget" class="text-center">Lupa Password?</a>
+    <a href="{{ route('register') }}" class="text-center">Register</a>
 
-  </div>
+  </div> --}}
   <!-- /.login-box-body -->
+  <a href="/login">kembali</a>
 </div>
 <!-- /.login-box -->
 

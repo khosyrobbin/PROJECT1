@@ -12,7 +12,7 @@
     @endif
     <td>
         @if (auth()->user()->level==1)
-            <a href="/bimbingan/add" class="btn btn-sm btn-info">Tambah</a><br>
+            {{-- <a href="/bimbingan/add" class="btn btn-sm btn-info">Tambah</a><br> --}}
         @elseif (auth()->user()->level==3)
             <a href="/bimbingan/add" class="btn btn-sm btn-info">Tambah</a><br>
         @endif
@@ -33,7 +33,11 @@
                 <th>NAMA MAHASISWA</th>
                 <th>TANGGAL</th>
                 <th>KETERANGAN</th>
-                <th>ACTION</th>
+                @if (auth()->user()->level==1)
+                    <th>ACTION</th>
+                @elseif (auth()->user()->level==3)
+                    <th>ACTION</th>
+                @endif
             </thead>
             <tbody class="table">
                 <?php $no=1; ?>

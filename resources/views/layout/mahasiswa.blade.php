@@ -2,7 +2,7 @@
 @section('title','Mahasiswa')
 
 @section('content')
-{{-- PESAN --}}
+    {{-- PESAN --}}
     @if (session('pesan'))
         <div class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -45,7 +45,7 @@
                         <td>{{ $data->no_telpon }}</td>
                         <td><img src="{{ url('foto_mhs/'.$data->foto) }}" width="100px"></td>
                         <td>
-                            <a href="/mahasiswa/detail/{{ $data->nim }}" class="btn btn-sm btn-warning">DETAIL</a>
+                            {{-- <a href="/mahasiswa/detail/{{ $data->nim }}" class="btn btn-sm btn-warning">DETAIL</a> --}}
                             @if (auth()->user()->level==1)
                                 <a href="/mahasiswa/edit/{{ $data->nim }}" class="btn btn-sm btn-primary">EDIT</a>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $data->nim }}">

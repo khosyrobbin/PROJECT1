@@ -60,35 +60,6 @@
         </div>
 
         <div class="form-group has-feedback">
-            <input type="tahun" name="tahun" class="form-control" placeholder="Tahun">
-            <span class="glyphicon glyphicon-edit form-control-feedback"></span>
-                @error('tahun')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-        </div>
-
-        <div class="form-group has-feedback">
-            <select type="prostud" name="prostud" class="form-control" placeholder="Program Studi">
-                <option value="">--PILIH PROGRAM STUDI--</option>
-                <option value="Teknik Informatika">Teknik Informatika</option>
-                <option value="Teknik Mesin">Teknik Mesin</option>
-                <option value="Teknik Sipil">Teknik Sipil</option>
-                <option value="Teknik Elektro">Teknik Elektro</option>
-                <option value="Teknik Kimia">Teknik Kimia</option>
-
-            </select>
-            {{-- <input type="prostud" name="prostud" class="form-control" placeholder="Program Studi">
-            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                @error('prostud')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror --}}
-        </div>
-
-        <div class="form-group has-feedback">
             <input type="name" name="name" class="form-control" placeholder="Username">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 @error('name')

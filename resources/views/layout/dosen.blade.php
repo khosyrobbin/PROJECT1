@@ -47,7 +47,7 @@
                         <td>{{ $data->no_telpon }}</td>
                         <td><img src="{{ url('foto_dosen/'.$data->foto) }}" width="100px"></td>
                         <td>
-                            <a href="/dosen/detail/{{ $data->nip }}" class="btn btn-sm btn-warning">DETAIL</a>
+                            {{-- <a href="/dosen/detail/{{ $data->nip }}" class="btn btn-sm btn-warning">DETAIL</a> --}}
 
                             @if (auth()->user()->level==1)
                                 <a href="/dosen/edit/{{ $data->nip }}" class="btn btn-sm btn-primary">EDIT</a>
